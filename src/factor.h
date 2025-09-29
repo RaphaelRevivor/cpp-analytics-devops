@@ -20,11 +20,13 @@ private:
   int64_t n;
   int64_t c;
   int64_t failure = 0;
-  int64_t polyFuncMod(int64_t x, int64_t c);
+  int64_t squareMod(int64_t x, int64_t c);
   int64_t calculateD(int64_t x, int64_t y);
   void selectC(int64_t& input);
   int64_t selectX0();
   int64_t basicIteration(int64_t &x, int64_t &y);
+  bool millerRabin();
+  int64_t mod_pow(int64_t b, int64_t d);
   void basicLogging(int64_t &x, int64_t &y, int64_t &d, int64_t &cnt);
 };
 
