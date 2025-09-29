@@ -3,7 +3,6 @@
 using namespace std;
 
 // === member functions for PollardsPho ===
-
 /// @brief constructor
 /// @param n the value for fatorization
 PollardsPho::PollardsPho(int64_t n) : n(n)
@@ -23,14 +22,13 @@ int64_t PollardsPho::calculate()
   while(d == 1 || d == n)
   {
     d = basicIteration(x, y);
-
-    cout << cnt << ":" << endl;
-    cout << "x, y, d:" << x << "," << y << "," << d << endl;
-
     if (d == n)
     {
       failure++;
     }
+
+    basicLogging(x, y, d, cnt);
+
     cnt++;
   }
 
@@ -51,6 +49,8 @@ int64_t PollardsPho::basicIteration(int64_t &x, int64_t &y)
   return d;
 }
 
+/// @brief  select the initial x
+/// @return x
 int64_t PollardsPho::selectX0()
 {
   return (rand() % (n - 2)) + 2;
@@ -87,5 +87,15 @@ void PollardsPho::selectC(int64_t& input)
     input = (rand() % (n - 4)) + 4;
 }
 
+/// @brief  provides a basic logging showing info for x, y, d, cnt
+/// @param x x
+/// @param y y
+/// @param d d
+/// @param cnt cnt
+void PollardsPho::basicLogging(int64_t &x, int64_t &y, int64_t &d, int64_t &cnt)
+{
+  cout << cnt << ":" << endl;
+  cout << "x, y, d:" << x << "," << y << "," << d << endl;
+}
 
 // === member functions for Factorization ===

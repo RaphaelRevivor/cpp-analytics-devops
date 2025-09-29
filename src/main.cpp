@@ -2,9 +2,19 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
-  int64_t n = 10967535067;
+  string input = "";
+  if (argc > 1)
+    input = argv[1];
+  else
+  {
+    throw invalid_argument("No argument is passed!");
+  }
+    
+  // might throw std::invalid_argument or std::out_of_range in case not able to parse
+  int64_t n = stoll(input);
+
   auto pollardsPho = PollardsPho(n);
   auto result = pollardsPho.calculate();
 

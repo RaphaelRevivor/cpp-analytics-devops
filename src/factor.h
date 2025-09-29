@@ -25,6 +25,7 @@ private:
   void selectC(int64_t& input);
   int64_t selectX0();
   int64_t basicIteration(int64_t &x, int64_t &y);
+  void basicLogging(int64_t &x, int64_t &y, int64_t &d, int64_t &cnt);
 };
 
 // class Factorization
