@@ -15,8 +15,14 @@ int main(int argc, char** argv)
   // might throw std::invalid_argument or std::out_of_range in case not able to parse
   int64_t n = stoll(input);
 
-  auto pollardsPho = PollardsPho(n);
-  auto result = pollardsPho.calculate();
+  auto factorization = Factorization(n);
 
-  cout << "One factor of " << n << " is: " << result << endl;
+  cout << "Factors of " << n << " are: " << endl;
+  auto results = factorization.getAllFactors();
+
+  for(const auto& result : results)
+  {
+    cout << result << ",";
+  }
+  cout << endl;
 }
