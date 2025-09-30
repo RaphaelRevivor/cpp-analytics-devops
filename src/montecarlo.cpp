@@ -2,10 +2,15 @@
 
 using namespace std;
 
-const int NUM = 4;
+const int NUM = 8;
 const int NUM_EACH_THREAD = 10000000;
 
-void MonteCarloPi::estimatePiSingleThread()
+MonteCarloPi::MonteCarloPi()
+{
+  inCircleVec.resize(NUM, 0);
+}
+
+void MonteCarloPi::estimatePiSingleThread(int threadId)
 {
   random_device rd;
   // mersenne_twister_engine seeded with rd()
@@ -16,7 +21,7 @@ void MonteCarloPi::estimatePiSingleThread()
     double x = distrib(gen);
     double y = distrib(gen);
     if (x*x + y*y <= 1.0)
-      insideCircle++;
+      inCircleVec[threadId]++;
   }
 }
 
@@ -24,7 +29,7 @@ double MonteCarloPi::estimatePi()
 {
   for(int i = 0; i < NUM; i++)
   {
-    threads.emplace_back(&MonteCarloPi::estimatePiSingleThread, this);
+    threads.emplace_back(&MonteCarloPi::estimatePiSingleThread, this, i);
   }
 
   for(auto& t : threads)
@@ -33,6 +38,5 @@ double MonteCarloPi::estimatePi()
   }
 
   // return pi here
-  cout << "insideCircle is: " << insideCircle << endl;
-  return (4.0 * static_cast<double>(insideCircle) / (NUM * NUM_EACH_THREAD));
+  return (4.0 * accumulate(inCircleVec.begin(), inCircleVec.end(), 0) / (NUM * NUM_EACH_THREAD));
 }

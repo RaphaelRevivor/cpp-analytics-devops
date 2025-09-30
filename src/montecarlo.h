@@ -5,6 +5,7 @@
 #include <vector>
 #include <random>
 #include <thread>
+#include <algorithm>
 
 using namespace std;
 
@@ -13,15 +14,15 @@ class MonteCarloPi
 public:
   MonteCarloPi& operator=(const MonteCarloPi&) = delete;
 
-  MonteCarloPi() = default;
+  MonteCarloPi();
   ~MonteCarloPi() = default;
 
-  void estimatePiSingleThread();
+  void estimatePiSingleThread(int threadId);
   double estimatePi();
 
 private:
   vector<thread> threads = {};
-  atomic<int> insideCircle = 0;
+  vector<int> inCircleVec = {};
 };
 
 #endif
