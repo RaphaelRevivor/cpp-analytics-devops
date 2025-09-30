@@ -4,5 +4,6 @@
 #include <iostream>
 #include <stdexcept>
 #include "factor.h"
+#include "montecarlo.h"
 
 #endif
