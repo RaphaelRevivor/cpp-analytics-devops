@@ -25,4 +25,8 @@ int main(int argc, char** argv)
     cout << result << ",";
   }
   cout << endl;
+
+  auto monteCarloPi = MonteCarloPi();
+  double pi = monteCarloPi.estimatePi();
+  cout << "The estimated pi is: " << pi << endl;
 }

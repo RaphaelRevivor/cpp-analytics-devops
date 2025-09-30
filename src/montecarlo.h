@@ -10,13 +10,17 @@ using namespace std;
 class MonteCarloPi
 {
 public:
-  double estimatePiSingleThread();
-  void estimatePi();
+  MonteCarloPi& operator=(const MonteCarloPi&) = delete;
+
+  MonteCarloPi() = default;
+  ~MonteCarloPi() = default;
+
+  void estimatePiSingleThread();
+  double estimatePi();
 
 private:
   vector<thread> threads = {};
   atomic<int> insideCircle = 0;
-
 };
 
 #endif
