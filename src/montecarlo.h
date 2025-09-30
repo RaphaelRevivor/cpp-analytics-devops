@@ -1,6 +1,7 @@
 #ifndef MONTE_H
 #define MONTE_H
 
+#include <iostream>
 #include <vector>
 #include <random>
 #include <thread>
