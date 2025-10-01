@@ -1,0 +1,7 @@
+module(
+  name = "cpp-analytics-docker",
+  version = "1.0.0",
+)
+
+bazel_dep(name = "googletest", version = "1.17.0")
+bazel_dep(name = "cpp-httplib", version = "0.22.0")

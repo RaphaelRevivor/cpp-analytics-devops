@@ -6,6 +6,9 @@ cc_library(
   hdrs = [
     "factor.h"
   ],
+  visibility = [
+    "//:__subpackages__",
+  ],
 )
 
 cc_library(
@@ -15,6 +18,9 @@ cc_library(
   ],
   hdrs = [
     "montecarlo.h"
+  ],
+  visibility = [
+    "//:__subpackages__",
   ],
 )
 
@@ -27,5 +33,6 @@ cc_binary(
   deps = [
     ":factorLib",
     ":montecarloLib",
+    "//src/api:restapiLib",
   ], 
 )

@@ -10,6 +10,19 @@ Factorization::Factorization(int64_t n) : n(n)
   srand(time(0));
 }
 
+string Factorization::getAllFactorsInString()
+{
+  string output = "";
+  auto factors = getAllFactors();
+  for(auto& iter = factors.begin(); iter != factors.end(); iter++)
+  {
+    output += to_string(*iter);
+    if (iter != prev(factors.end()))
+      output += ",";
+  }
+  return output;
+}
+
 vector<int64_t> Factorization::getAllFactors()
 {
   vector<int64_t> output = {};
@@ -92,7 +105,11 @@ int64_t Factorization::selectX0(const int64_t& input)
 /// @return f(x)
 int64_t Factorization::squareMod(const int64_t& x, const int64_t& c, const int64_t& input)
 {
+#ifdef _MSC_VER
+  int64_t output = (x * x + c) % input;
+#else
   __int128_t output = (x * x + c) % input;
+#endif
   return output;
 }
 
@@ -147,9 +164,13 @@ bool Factorization::millerRabin(const int64_t& input)
     if (base >= input)
       continue;
 
-    // calculate x = a^d % n
+#ifdef _MSC_VER
+    int64_t x = mod_pow(base, d, input);
+#else
     __int128_t x = mod_pow(base, d, input);
+#endif
 
+    // calculate x = a^d % n
     if (x == 1 || x == input - 1)
       continue;
     
@@ -175,7 +196,12 @@ bool Factorization::millerRabin(const int64_t& input)
 /// @return mod power result
 int64_t Factorization::mod_pow(const int64_t& b, const int64_t& d, const int64_t& input)
 {
+
+#ifdef _MSC_VER
+  int64_t result = 1;
+#else
   __int128_t result = 1;
+#endif
   int64_t base = b;
   int64_t dd = d;
   base = base % input;
