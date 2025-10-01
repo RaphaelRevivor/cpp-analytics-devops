@@ -1,16 +1,16 @@
 #ifndef REST_H
 #define REST_H
 
-#define CPPHTTPLIB_OPENSSL_SUPPORT
+// #define CPPHTTPLIB_OPENSSL_SUPPORT
 
 #ifdef _MSC_VER
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#include <httplib.h>
 #endif
+#include <httplib.h>
 
 #include "src/factor.h"
-#include "src/factor.h"
+#include "src/montecarlo.h"
 
 using namespace httplib;
 

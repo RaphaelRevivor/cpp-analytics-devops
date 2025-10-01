@@ -15,13 +15,14 @@ class MonteCarloPi
 public:
   MonteCarloPi& operator=(const MonteCarloPi&) = delete;
 
-  MonteCarloPi();
+  MonteCarloPi(int n);
   ~MonteCarloPi() = default;
 
   void estimatePiSingleThread(int threadId);
   double estimatePi();
 
 private:
+  int n = 0;
   vector<thread> threads = {};
   vector<int> inCircleVec = {};
 };

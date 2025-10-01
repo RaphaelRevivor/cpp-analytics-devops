@@ -14,12 +14,13 @@ string Factorization::getAllFactorsInString()
 {
   string output = "";
   auto factors = getAllFactors();
-  for(auto& iter = factors.begin(); iter != factors.end(); iter++)
+  for(auto iter = factors.begin(); iter != factors.end(); iter++)
   {
     output += to_string(*iter);
     if (iter != prev(factors.end()))
       output += ",";
   }
+  output += "\n";
   return output;
 }
 
