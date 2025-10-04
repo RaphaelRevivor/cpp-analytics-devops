@@ -26,7 +26,7 @@ int RestApi::runServer()
     res.set_content(piStr, "text/plain");
   });
 
-  if (!svr.listen("localhost", 8080)) {
+  if (!svr.listen("0.0.0.0", 8080)) {
       std::cerr << "Error starting server\n";
       return 1;
   }
