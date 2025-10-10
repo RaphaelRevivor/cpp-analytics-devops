@@ -3,7 +3,7 @@
 FROM ubuntu:22.04 as builder
 RUN apt-get update && apt-get install -y curl gnupg apt-transport-https g++ clang
 RUN apt-get update && apt-get install -y curl unzip \
- && ARCH=$(uname -m | sed 's/aarch64/arm64/;s/x86_64/amd64/') \
+ && ARCH=$(uname -m | sed 's/aarch64/arm64/') \
  && echo "Detected architecture: $ARCH" \
  && curl -fsSL https://releases.bazel.build/8.4.2/release/bazel-8.4.2-linux-$ARCH \
       -o /usr/local/bin/bazel \
