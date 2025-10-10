@@ -8,6 +8,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <numeric>
+#include <string>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ public:
   Factorization(int64_t n);
   ~Factorization() = default;
   vector<int64_t> getAllFactors();
+  string getAllFactorsInString();
   int64_t getFactor(const int64_t& input);
 
 private:

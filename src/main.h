@@ -5,5 +5,6 @@
 #include <stdexcept>
 #include "factor.h"
 #include "montecarlo.h"
+#include "api/rest.h"
 
 #endif
